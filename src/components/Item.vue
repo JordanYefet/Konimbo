@@ -28,19 +28,19 @@ export default {
 
 <style scoped>
 .containerBorder {
+  position: relative;
   border: 1px dashed gray;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
-  height: 400px;
-  width: 250px;
+  height: 350px;
+  width: 200px;
   margin: 20px;
-  position: relative;
   cursor: pointer;
 }
 .containerItem {
   text-align: center;
   overflow: hidden;
-  height: 400px;
+  height: 350px;
 }
 
 .containerItem:hover :not(#popup) {
@@ -53,17 +53,19 @@ export default {
 
 #popup {
   position: absolute;
-  top: 40%;
+  top: 30%;
   text-align: center;
   width: 100%;
+  /*   height: 100%; */
   z-index: 1;
   visibility: hidden;
+  margin: 0;
 }
 
 /* h1 {
   margin: 0;
-} */
-
+}
+ */
 @keyframes blur {
   from {
     filter: blur(0px) opacity(1);
@@ -76,15 +78,15 @@ export default {
 .photoDiv {
   display: flex;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin: auto;
 }
 
 #image {
   width: 100%;
-  height: 200px;
-  max-height: 200px;
+  height: 150px;
+  max-height: 150px;
   object-fit: contain;
   margin: 0;
 }

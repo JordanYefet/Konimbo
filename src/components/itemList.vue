@@ -1,7 +1,11 @@
 <template>
   <div class="containerGrid">
+    <!--     <p>{{ searchedItem }}</p> -->
     <div class="containerItems">
-      <div v-for="(item, index) in items" v-bind:key="index">
+      <!--       <div v-for="(item, index) in items" v-bind:key="index">
+        <Item v-bind:item="item" />
+      </div> -->
+      <div v-for="(item, index) in filteredData" v-bind:key="index">
         <Item v-bind:item="item" />
       </div>
     </div>
@@ -12,30 +16,36 @@
 import Item from "./Item.vue";
 export default {
   name: "itemList",
-  props: ["items"],
+  props: ["items", "searchedItem"],
   components: {
     Item,
+  },
+  computed: {
+    filteredData() {
+      return this.items.filter((searchItemFunction) => {
+        return searchItemFunction.title
+          .toLowerCase()
+          .includes(this.searchedItem.toLowerCase());
+      });
+    },
   },
 };
 </script>
 
 <style scoped>
-.containerGrid {
-}
 .containerItems {
   display: grid;
-  /*   grid-template-columns: repeat(4, 1fr); */
   border: 3px solid teal;
   justify-items: center;
 
   /* Responsive Area */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  column-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-gap: 1rem;
   padding-left: 30px;
   padding-right: 30px;
 }
 
-@media only screen and (min-width: 2500px) {
+@media only screen and (min-width: 2200px) {
   .containerItems {
     grid-template-columns: repeat(4, 1fr);
   }

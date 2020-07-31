@@ -10,9 +10,6 @@ export default {
 };
 </script>
 
-
-
-
 <style scoped>
 .Header {
   display: flex;
@@ -26,5 +23,6 @@ export default {
 
 h1 {
   margin: 0;
+  position: static;
 }
 </style>

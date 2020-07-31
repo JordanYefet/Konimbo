@@ -2,8 +2,12 @@
   <div id="app">
     <!-- <HelloWorld msg="Jordan" /> -->
     <Header class="header"></Header>
-    <Searchbar></Searchbar>
-    <itemList v-bind:items="items" class="itemList"></itemList>
+    <Searchbar @searchedItem="searchedItem = $event"></Searchbar>
+    <itemList
+      :items="items"
+      :searchedItem="searchedItem"
+      class="itemList"
+    ></itemList>
     <p>powered by Jordan The King</p>
   </div>
 </template>
@@ -21,9 +25,9 @@ export default {
     itemList,
     Searchbar,
   },
-
   data() {
     return {
+      searchedItem: "",
       items: [
         {
           created_at: "2016-03-09T12:08:38+02:00",
@@ -2093,6 +2097,7 @@ export default {
       ],
     };
   },
+
   /*   data() {
     return {
       items: [
@@ -2239,8 +2244,6 @@ export default {
 };
 </script>
 
-
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -2248,7 +2251,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
-  max-width: 1700px;
+  max-width: 1200px;
   min-width: 350px;
   margin-left: 25%;
   margin-right: 25%;

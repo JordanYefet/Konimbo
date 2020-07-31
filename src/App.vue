@@ -3,28 +3,35 @@
     <!-- <HelloWorld msg="Jordan" /> -->
     <Header class="header"></Header>
     <Searchbar @searchedItem="searchedItem = $event"></Searchbar>
-    <itemList
-      :items="items"
-      :searchedItem="searchedItem"
-      class="itemList"
-    ></itemList>
+    <itemList :items="filteredData" class="itemList"></itemList>
     <p>powered by Jordan The King</p>
   </div>
 </template>
 
 <script>
-/* import HelloWorld from "./components/HelloWorld.vue"; */
 import Header from "./components/Header.vue";
 import itemList from "./components/itemList.vue";
 import Searchbar from "./components/Searchbar.vue";
 
 export default {
   name: "App",
+
   components: {
     Header,
     itemList,
     Searchbar,
   },
+
+  computed: {
+    filteredData() {
+      return this.items.filter((searchItemFunction) => {
+        return searchItemFunction.title
+          .toLowerCase()
+          .includes(this.searchedItem.toLowerCase());
+      });
+    },
+  },
+
   data() {
     return {
       searchedItem: "",

@@ -2,12 +2,12 @@
   <div class="containerGrid">
     <!--     <p>{{ searchedItem }}</p> -->
     <div class="containerItems">
-      <!--       <div v-for="(item, index) in items" v-bind:key="index">
-        <Item v-bind:item="item" />
-      </div> -->
-      <div v-for="(item, index) in filteredData" v-bind:key="index">
+      <div v-for="(item, index) in items" v-bind:key="index">
         <Item v-bind:item="item" />
       </div>
+      <!--       <div v-for="(item, index) in filteredData" v-bind:key="index">
+        <Item v-bind:item="item" />
+      </div> -->
     </div>
   </div>
 </template>
@@ -20,15 +20,7 @@ export default {
   components: {
     Item,
   },
-  computed: {
-    filteredData() {
-      return this.items.filter((searchItemFunction) => {
-        return searchItemFunction.title
-          .toLowerCase()
-          .includes(this.searchedItem.toLowerCase());
-      });
-    },
-  },
+  computed: {},
 };
 </script>
 

@@ -7,12 +7,12 @@
           <h1>Image is not avaliable</h1>
         </span>
       </div>
-      <p class="title">{{item.title}}</p>
+      <p class="title">{{ item.title }}</p>
       <div class="newPrice">
-        <h1>{{item.price}}₪</h1>
+        <h1>{{ item.price }}₪</h1>
       </div>
       <div class="oldPrice" v-if="item.origin_price">
-        <p>{{item.origin_price}}₪</p>
+        <p>{{ item.origin_price }}₪</p>
       </div>
       <h1 id="popup">לחץ כאן לפרטים נוספים</h1>
     </div>
@@ -81,6 +81,7 @@ export default {
   width: 150px;
   height: 150px;
   margin: auto;
+  margin-top: 10px;
 }
 
 #image {

@@ -1,3 +1,5 @@
+new Vue({ })
+
 <template>
   <div id="app">
     <!-- <HelloWorld msg="Jordan" /> -->
@@ -9,6 +11,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import Header from "./components/Header.vue";
 import itemList from "./components/itemList.vue";
 import Searchbar from "./components/Searchbar.vue";
@@ -24,15 +27,38 @@ export default {
 
   computed: {
     filteredData() {
-      return this.items.filter((searchItemFunction) => {
-        return searchItemFunction.title
-          .toLowerCase()
-          .includes(this.searchedItem.toLowerCase());
-      });
+      if (this.items != null) {
+        return this.items.filter((searchItemFunction) => {
+          return searchItemFunction.title
+            .toLowerCase()
+            .includes(this.searchedItem.toLowerCase());
+        });
+      } else {
+        return 0;
+      }
     },
   },
 
   data() {
+    return {
+      searchedItem: "",
+      items: null,
+    };
+  },
+
+  mounted() {
+    axios
+      .get(
+        "https://api.konimbo.co.il/v1/items?token=9c1a92bf8cefc59e4ec9fa7c53bba0f90dd8b15850bef1062dbf32c5e8fd3a08"
+      )
+      .then((response) => {
+        console.log(response);
+        this.items = response.data;
+      })
+      .catch((error) => console.log(error));
+  },
+
+  /*data() {
     return {
       searchedItem: "",
       items: [
@@ -2098,150 +2124,6 @@ export default {
                 "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/4263626/original/f56dbce666900ea8779cdf18f618ed08.jpg",
               position: 3,
               alt: "",
-            },
-          ],
-        },
-      ],
-    };
-  },
-
-  /*   data() {
-    return {
-      items: [
-        {
-          created_at: "2016-03-09T12:08:38+02:00",
-          updated_at: "2016-03-09T12:08:38+02:00",
-          id: 1,
-          title: "טלפון סלולרי Asus Zenfone 2 ZE551ML 4GB RAM 32GB אסוס",
-          store_category_title: "אבא",
-          store_category_title_with_parent: {
-            child_title: "אבא",
-            parent_title: "סמארטפונים",
-          },
-          price: "999.0",
-          origin_price: "9999.0",
-          desc: "",
-          images: [
-            {
-              id: 1143315,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143315/original/5c2c879defa87d4c2bc3cf1d4218e812.jpg",
-              position: 1,
-              alt: null,
-            },
-            {
-              id: 1143318,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143318/original/310adb815ea4d312aafc13859cd55f11.jpg",
-              position: 2,
-              alt: null,
-            },
-            {
-              id: 1143326,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143326/original/7522091716f92d2b5399c66255fda90e.jpg",
-              position: 3,
-              alt: null,
-            },
-            {
-              id: 1143330,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143330/original/2140917a5de6675cd9bbc7cceedca5e5.jpg",
-              position: 4,
-              alt: null,
-            },
-            {
-              id: 1143332,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143332/original/1e784f07b5a248ae71d55f8a3ef9f1c2.jpg",
-              position: 5,
-              alt: null,
-            },
-            {
-              id: 1143335,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143335/original/88997a6df2b6dc14ea0fa3bcba938f7e.jpg",
-              position: 6,
-              alt: null,
-            },
-            {
-              id: 1143337,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143337/original/e6491e834c79b518887bdc79d155c09e.jpg",
-              position: 7,
-              alt: null,
-            },
-            {
-              id: 1143340,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143340/original/6b2df8c08dd43e594a8816b286797a49.jpg",
-              position: 8,
-              alt: null,
-            },
-            {
-              id: 1143344,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143344/original/d7b1bca409b7151d545fa5da25d8ca4c.jpg",
-              position: 9,
-              alt: null,
-            },
-            {
-              id: 1143346,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143346/original/f20bd06d9a1d65c8ce08dcdb831a6454.jpg",
-              position: 10,
-              alt: null,
-            },
-            {
-              id: 1143350,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143350/original/df74f0b2e8e15cf25b52bf246310b9fd.jpg",
-              position: 11,
-              alt: null,
-            },
-            {
-              id: 1143352,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143352/original/e638178b1162da2373b589fc55771607.jpg",
-              position: 12,
-              alt: null,
-            },
-          ],
-        },
-        {
-          created_at: "2016-03-09T12:09:03+02:00",
-          updated_at: "2016-03-09T12:09:03+02:00",
-          id: 2,
-          title: "תיק למחשב נייד Lowepro Transit Sleeve",
-          store_category_title: "טאבלטים",
-          store_category_title_with_parent: {
-            child_title: "טאבלטים",
-            parent_title: null,
-          },
-          price: "999.0",
-          origin_price: "",
-          desc: "",
-          images: [
-            {
-              id: 1143354,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143354/original/467b3cda8e5fcb918030d1d02e5eee6b.jpg",
-              position: 1,
-              alt: null,
-            },
-            {
-              id: 1143357,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143357/original/339edc221aabcb179522eff3cc91db6e.jpg",
-              position: 2,
-              alt: null,
-            },
-            {
-              id: 1143360,
-              url:
-                "https://s3-eu-west-1.amazonaws.com/konimboimages/system/photos/1143360/original/a30544e58f20ea70e60600aca67c3ba4.jpg",
-              position: 3,
-              alt: null,
             },
           ],
         },

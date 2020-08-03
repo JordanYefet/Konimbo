@@ -19,6 +19,7 @@ export default {
   color: white;
   text-align: center;
   height: 200px;
+  border-bottom: 10px #2c3e50 solid;
 }
 
 h1 {

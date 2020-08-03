@@ -1,24 +1,30 @@
 <template>
   <div class="containerGrid">
-    <!--     <p>{{ searchedItem }}</p> -->
     <div class="containerItems">
       <div v-for="(item, index) in items" v-bind:key="index">
-        <Item v-bind:item="item" />
+        <!--         <router-link tag="div" id="link" :to="{ name: 'itemDetail', params: { index: index}  }"> -->
+        <router-link
+          tag="div"
+          id="link"
+          :to="{ name: 'itemDetail', params: { index: index } }"
+        >
+          <Item :item="item" :index="index" />
+        </router-link>
       </div>
-      <!--       <div v-for="(item, index) in filteredData" v-bind:key="index">
-        <Item v-bind:item="item" />
-      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import Item from "./Item.vue";
+/* import itemDetail from "./itemDetail.vue"; */
+
 export default {
   name: "itemList",
   props: ["items", "searchedItem"],
   components: {
     Item,
+    /*     itemDetail, */
   },
   computed: {},
 };

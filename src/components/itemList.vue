@@ -2,7 +2,6 @@
   <div class="containerGrid">
     <div class="containerItems">
       <div v-for="(item, index) in items" v-bind:key="index">
-        <!--         <router-link tag="div" id="link" :to="{ name: 'itemDetail', params: { index: index}  }"> -->
         <router-link
           tag="div"
           id="link"

@@ -36,7 +36,6 @@ export default {
 }
 .photoGrid {
   display: grid;
-  /*   border: 3px solid teal; */
   justify-items: center;
 
   /* Responsive Area */

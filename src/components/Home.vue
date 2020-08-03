@@ -6,12 +6,15 @@
 </template>
 
 <script>
-import axios from "axios";
 import itemList from "./itemList.vue";
 import Searchbar from "./Searchbar.vue";
 
 export default {
   name: "Home",
+
+  created() {
+    this.$store.dispatch("fetchItems");
+  },
 
   components: {
     itemList,
@@ -20,8 +23,8 @@ export default {
 
   computed: {
     filteredData() {
-      if (this.items != null) {
-        return this.items.filter((searchItemFunction) => {
+      if (this.$store.getters.itemList) {
+        return this.$store.getters.itemList.filter((searchItemFunction) => {
           return searchItemFunction.title
             .toLowerCase()
             .includes(this.searchedItem.toLowerCase());
@@ -35,7 +38,6 @@ export default {
   data() {
     return {
       searchedItem: "",
-      items: null,
     };
   },
 
@@ -2111,18 +2113,6 @@ export default {
       ],
     };
   }, */
-
-  mounted() {
-    axios
-      .get(
-        "https://api.konimbo.co.il/v1/items?token=9c1a92bf8cefc59e4ec9fa7c53bba0f90dd8b15850bef1062dbf32c5e8fd3a08"
-      )
-      .then((response) => {
-        console.log(response);
-        this.items = response.data;
-      })
-      .catch((error) => console.log(error));
-  },
 };
 </script>
 

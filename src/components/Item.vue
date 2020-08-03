@@ -62,10 +62,6 @@ export default {
   margin: 0;
 }
 
-/* h1 {
-  margin: 0;
-}
- */
 @keyframes blur {
   from {
     filter: blur(0px) opacity(1);

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
-/* import { store } from "./store"; */
+import { store } from "./store";
 
 import itemDetail from "./components/itemDetail.vue";
 import Home from "./components/Home.vue";
@@ -26,6 +26,6 @@ const router = new VueRouter({
 
 new Vue({
   render: (h) => h(App),
-  /*   store, */
+  store,
   router,
 }).$mount("#app");

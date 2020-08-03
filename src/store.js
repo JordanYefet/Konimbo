@@ -1,4 +1,4 @@
-/* import Vue from "vue";
+import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 
@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     loadingStatus: "notLoading",
-    items: [],
+    items: null,
   },
 
   mutations: {
@@ -29,20 +29,18 @@ export const store = new Vuex.Store({
         .then((response) => {
           context.commit("SET_LOADING_STATUS", "notLoading");
           context.commit("SET_ITEMS", response.data);
-        });
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error));
     },
   },
 
   getters: {
-    itemList(state) {
+    itemList: (state) => {
       return state.items;
     },
-    item(state) {
-      return (index) =>
-        state.items.filter((item) => {
-          return item[index];
-        });
+    getItem: (state) => (index) => {
+      return state.items[index];
     },
   },
 });
- */

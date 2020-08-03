@@ -17,14 +17,12 @@
 
 <script>
 import Item from "./Item.vue";
-/* import itemDetail from "./itemDetail.vue"; */
 
 export default {
   name: "itemList",
   props: ["items", "searchedItem"],
   components: {
     Item,
-    /*     itemDetail, */
   },
   computed: {},
 };

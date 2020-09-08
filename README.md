@@ -1,4 +1,4 @@
-# E-Commerse demo
+# E-Commerce demo
 
 ## Project setup
 

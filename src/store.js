@@ -23,7 +23,9 @@ export const store = new Vuex.Store({
     fetchItems(context) {
       context.commit("SET_LOADING_STATUS", "loading");
       axios
-        .get("<PUT API HERE>")
+        .get(
+          "https://api.konimbo.co.il/v1/items?token=9c1a92bf8cefc59e4ec9fa7c53bba0f90dd8b15850bef1062dbf32c5e8fd3a08"
+        )
         .then((response) => {
           context.commit("SET_LOADING_STATUS", "notLoading");
           context.commit("SET_ITEMS", response.data);

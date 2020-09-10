@@ -36,6 +36,13 @@ export default {
   margin-left: 25%;
   margin-right: 25%;
 }
+
+@media screen and (max-width: 500px) {
+  #app {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 p {
   margin: 0;
 }

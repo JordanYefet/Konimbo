@@ -2,13 +2,14 @@
 ```
 Heroku - https://e-commerce-web-jordanyefet.herokuapp.com/
 ```
-This project demonstrates a simple E-Commerce website (still in development).
-I get the products through an API call and save the state in Vuex. 
-I have different routing for each product, which I handle with Vue-Router.
-
-
-
-
+### This project demonstrates a simple E-Commerce website (still in development).
+### I get the products through an API call and save the state in Vuex. 
+### I have different routing for each product, which I handle with Vue-Router.
+.
+.
+.
+.
+.
 ## Project setup
 
 ```
